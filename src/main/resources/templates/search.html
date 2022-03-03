@@ -20,23 +20,26 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == enteredSearchType}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
         </p>
-
+        <p th:if="${searchTypeNotFound}" th:text="searchTypeRequired"></p>
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" th:value="${enteredSearchTerm}" />
         </p>
 
-        <input type="submit" value="Search" />
+        <input class="button" type="submit" value="Search" />
     </form>
 
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <h1 th:text="${searchedFor}"></h1>
+    <div th:replace="fragments :: jobs-table"></div>
+    <p th:text="${noResults}"></p>
 
 </div>
 

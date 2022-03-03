@@ -27,5 +27,72 @@
         </div>
     </div>
 
+<!--    <table th:fragment="jobs-table" class="job-listing">-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Employer</th>-->
+<!--            <th>Location</th>-->
+<!--            <th>Skill</th>-->
+<!--            <th>Core Competency</th>-->
+<!--        </tr> &lt;!&ndash; It's fine to remove this element. &ndash;&gt;-->
+<!--        <tr th:each="job : ${jobs}" >-->
+<!--            <td th:text="${job.getId()}">-->
+<!--                ID:-->
+<!--            </td>-->
+<!--            <td th:text="${job.getName()}">-->
+<!--                Name:-->
+<!--            </td>-->
+<!--            <td th:text="${job.getEmployer()}">-->
+<!--                Employer:-->
+<!--            </td>-->
+<!--            <td th:text="${job.getLocation()}">-->
+<!--                Location:-->
+<!--            </td>-->
+<!--            <td th:text="${job.getPositionType()}">-->
+<!--                Position Type:-->
+<!--            </td>-->
+<!--            <td th:text="${job.getCoreCompetency()}">-->
+<!--                Core Competency:-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+<!--    <table th:if="${jobs.size > 0}" th:fragment="jobs-table" class="job-listing">-->
+<!--        <tr th:each="job : ${jobs}">-->
+<!--            <td>-->
+<!--                ID:  <b class="jobValues"><th:block th:text="${job.getId}"></th:block></b>-->
+<!--                <br> </br>-->
+<!--                Name: <b class="jobValues"><th:block th:text="${job.getName}"></th:block></b>-->
+<!--                <br> </br>-->
+<!--                Employer: <b class="jobValues"><th:block th:text="${job.getEmployer}"></th:block></b>-->
+<!--                <br> </br>-->
+<!--                Location: <b class="jobValues"><th:block th:text="${job.getLocation}"></th:block></b>-->
+<!--                <br> </br>-->
+<!--                Position Type: <b class="jobValues"><th:block th:text="${job.getPositionType}"></th:block></b>-->
+<!--                <br> </br>-->
+<!--                Skill: <b class="jobValues"><th:block th:text="${job.getCoreCompetency}"></th:block></b>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+    <table th:if="${jobs.size > 0}" th:fragment="jobs-table" class="job-listing">
+        <tr th:each="job : ${jobs}">
+            <td>
+                ID:  <b class="jobValues" th:text="${job.getId}"></b>
+                <br> </br>
+                Name: <b class="jobValues" th:text="${job.getName}"></b>
+                <br> </br>
+                Employer: <a class="jobValues" th:href="@{/list/jobs(column=employer,value=${job.getEmployer})}" th:text="${job.getEmployer}"></a>
+                <br> </br>
+                Location: <a class="jobValues" th:href="@{/list/jobs(column=location,value=${job.getLocation})}" th:text="${job.getLocation}"></a>
+                <br> </br>
+                Position Type: <a class="jobValues" th:href="@{/list/jobs(column=PositionType,value=${job.getPositionType})}" th:text="${job.getPositionType}"></a>
+                <br> </br>
+                Skill: <a class="jobValues" th:href="@{/list/jobs(column=CoreCompetency,value=${job.getCoreCompetency})}" th:text="${job.getCoreCompetency}"></a>
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>

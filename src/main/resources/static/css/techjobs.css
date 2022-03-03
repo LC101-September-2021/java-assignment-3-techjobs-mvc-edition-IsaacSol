@@ -44,3 +44,11 @@ label {
 .centered {
     text-align: center;
 }
+
+.button:hover {
+    color: blue;
+}
+
+.jobValues {
+    font-family: Monospace;
+}
